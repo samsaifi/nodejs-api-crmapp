@@ -8,9 +8,11 @@ const getAccount = require("./get-account");
 const updateAccount = require("./update-account");
 const manyAccount = require("./many-accounts");
 const fakeAccounts = require("./fake-account");
+const findAccount = require("./find-account");
 
 router.get("/fake/:num", fakeAccounts);
 router.get("/get", getAccount);
+router.get("/find/:id", findAccount);
 router.get("/many", manyAccount);
 router.post("/add", addAccount);
 router.delete("/delete", deleteAccount);

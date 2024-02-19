@@ -9,8 +9,9 @@ const schema = Joi.object({
 
 
 const addAccount = async (req, res) => {
-    console.log(req.body);
+
     try {
+        console.log(req.body);
         const validate = await schema.validateAsync(req.body);
 
         const account = new Accounts(req.body);
@@ -19,6 +20,7 @@ const addAccount = async (req, res) => {
         return res.status(200).send({ status: 200, account: req.body })
     }
     catch (err) {
+        console.log(err.message);
         return res.status(400).send({ status: 400, err: err.message });
     }
 

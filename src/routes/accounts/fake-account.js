@@ -15,7 +15,7 @@ const fakeAccounts = async (req, res) => {
         role: faker.person.jobTitle(),
       };
     }
-    console.log(fakeAccountData);
+    // console.log(fakeAccountData);
     const account = await Accounts.insertMany(fakeAccountData);
 
     // const account = new Accounts();
@@ -23,6 +23,7 @@ const fakeAccounts = async (req, res) => {
 
     return res.status(200).send({ status: 200, fakeAccountData });
   } catch (err) {
+    console.log(err.message);
     return res.status(400).send({ status: 400, err: err.message });
   }
 };

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     try {
         console.log(req.body);
         const data = req.body;

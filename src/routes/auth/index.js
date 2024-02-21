@@ -1,12 +1,13 @@
-const exports = require('express');
-const router = exports.Router();
+const express = require("express");
+const router = express.Router();
 
-const singup = require('./singup');
 const login = require('./login');
 
 
-router.use('login', login);
-router.use('signup', singup);
+router.post('/login', (req, res) => {
+    console.log(req.body);
+});
+
 
 module.exports = router;
 

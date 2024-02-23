@@ -1,8 +1,8 @@
 const { log } = require("console");
 const jwt = require("jsonwebtoken");
 
-const getJwtToken = (user) => {
-  Token;
+const getJwtToken = async (user) => {
+
   const userData = {
     status: true,
     userId: user._id,
@@ -31,9 +31,9 @@ const verifyJwtToken = (req, res, next) => {
     }
 
     // If the token is valid, you can access the decoded information
-    return res.json({ message: `Welcome, crm app!`, user: decoded });
+    // return res.json({ message: `Welcome, crm app!`, user: decoded });
   });
-  //   next();
+  next();
 };
 
 module.exports = {

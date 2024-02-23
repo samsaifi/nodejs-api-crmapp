@@ -1,15 +1,17 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const { Users } = require('../models');
 getSalt = () => {
     const saltRounds = 10;
     return bcrypt.genSaltSync(saltRounds);
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
+            // Store hash in your password DB.
+        });
+    });
 }
 getmatchPassword = async (res, body, user) => {
 
-    if (!user) {
-        return res.status(401).json({ error: 'Invalid username or password' });
-    }
-    bcrypt.compare(body.password, user.password, (err, result) => {
+    return bcrypt.compare(body.password, user.password, (err, result) => {
         if (err) {
             console.error('Error comparing passwords:', err);
             return res.status(500).json({ error: 'Internal Server Error', message: err.message });
@@ -19,6 +21,7 @@ getmatchPassword = async (res, body, user) => {
             // Passwords do not match, authentication failed
             return res.status(401).json({ error: 'Invalid username or password' });
         }
+        console.log(result);
     });
 }
 

@@ -12,13 +12,13 @@ const router = express.Router();
 router.use("/accounts", accounts);
 router.use("/auth", auth);
 
-router.get('/get-session', (req, res) => {
+router.get('/user/session', (req, res) => {
     // Destroy the session
     return res.json({
         session: req.session
     });
 });
-router.get('/logout', (req, res) => {
+router.get('/user/logout', (req, res) => {
     // Destroy the session
     req.session.destroy(() => {
         return res.json({

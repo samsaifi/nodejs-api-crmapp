@@ -22,7 +22,7 @@ app.use(
 /*core()*/
 app.use(cors());
 app.use((req, res, next) => {
-  if (req.path === "/api/auth/login" || req.path === "/api/auth/register") {
+  if (req.path === "/api/auth/login" || req.path === "/api/auth/register" || req.path === "/api/auth/forget-password") {
     return next();
   }
   if (req.path === "/api/user/session" || req.path === "/api/user/logout") {

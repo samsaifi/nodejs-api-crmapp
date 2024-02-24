@@ -7,7 +7,7 @@ const loginUser = async (req, res) => {
   try {
 
     const user = await Users.findOne({ email: req.body.email });
-    
+
     if (!user) {
       return res.status(401).json({ error: "Invalid Email" });
     }
@@ -16,7 +16,7 @@ const loginUser = async (req, res) => {
 
     setSessions(req, user);
     const token = await getJwtToken(user);
-    console.log(token);
+    // console.log(token);
     return res
       .status(200)
       .json({ message: "login successful", token });

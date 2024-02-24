@@ -35,6 +35,18 @@ userLoginValidation = async (req, res, next) => {
 
   next();
 };
+userForgetPassword = async (req, res, next) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+  });
+
+  const { error } = schema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+
+  next();
+};
 
 checkUserEmailExits = async (email) => {
   const user = await Users.findOne({ email });
@@ -44,5 +56,6 @@ checkUserEmailExits = async (email) => {
 module.exports = {
   userRegistration,
   userLoginValidation,
+  userForgetPassword,
   checkUserEmailExits,
 };

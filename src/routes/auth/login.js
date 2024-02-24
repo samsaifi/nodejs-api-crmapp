@@ -7,6 +7,7 @@ const loginUser = async (req, res) => {
   try {
 
     const user = await Users.findOne({ email: req.body.email });
+    
     if (!user) {
       return res.status(401).json({ error: "Invalid Email" });
     }
